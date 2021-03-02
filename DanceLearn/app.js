@@ -42,6 +42,7 @@ function makeSmart() {
 }
 function makePrediction() {
   speak();
+  text(brain.guess, 0, 540);
 }
 
 function predict(error, result) {
