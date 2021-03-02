@@ -20,5 +20,5 @@ function speak() {
   text(brain.status, 0, 520);
 }
 
-window.draw = speak;
-window.setup = makeListen;
+window.draw = makePrediction;
+window.setup = makeSmart;

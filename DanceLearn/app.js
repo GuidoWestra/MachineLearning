@@ -21,3 +21,35 @@ function makeListen() {
   connect();
   makeButtons();
 }
+
+function train(loss) {
+  if (loss > 0) {
+    brain.status = loss;
+  } else {
+    brain.status = "Playing";
+  }
+}
+
+function startThinking() {
+  brain.status = `Thinking... Status:${brain.status}`;
+  brain.model.train(train);
+}
+
+function makeSmart() {
+  makeListen();
+  const think = createButton("think");
+  think.mousePressed(startThinking);
+}
+function makePrediction() {
+  speak();
+}
+
+function predict(error, result) {
+  if (error) {
+    console.log(error);
+  } else {
+    brain.prediction = result[0].label;
+
+    brain.model.classify(predict);
+  }
+}
